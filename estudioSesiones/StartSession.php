@@ -1,3 +1,13 @@
+<?php
+//cuando queremos trabajar con sesiones asi se inician
+session_start();
+if(isset($_POST['destroy'])){
+  session_destroy();
+  header("Location: StartSession.php");
+  exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +17,6 @@
 </head>
 <body>
 <?php
-//cuando queremos trabajar con sessiones asi se inician
-session_start();
-
 if (isset($_SESSION['number_of_visits'])) {
   //asi vamos incrementandolas siempre
   $_SESSION['number_of_visits']++;
@@ -21,6 +28,9 @@ if (isset($_SESSION['number_of_visits'])) {
 printf("<p>%d</p>", $_SESSION['number_of_visits']);
 
 ?>
+  <form action="" method="post">
+    <button name="destroy">Eliminar</button>
+  </form>
 </body>
 </html>
 

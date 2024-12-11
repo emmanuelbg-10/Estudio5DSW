@@ -21,16 +21,25 @@
     }
     //visits es un array del tiempo actual
     $_SESSION['visits'][] = time();
-    echo "<h1>Historial de visitas</h1>";
-    foreach ($_SESSION['visits'] as $visit) {
-      //mostramos cada uno y le damos un formato para entender lo que nos devuelve
-      printf("<p>%s</p>", date("Y-m-d H:i:s", $visit));
-    }
-    //y por ultimo mostramos con count cuantas visitas tenemos
+
+
+    if( count( $_SESSION['visits']) == 1){ ?>
+    <h1>Bienvenido</h1>
+<?php
+    } else {
+      echo "<h1>Historial de visitas</h1>";
+      foreach ($_SESSION['visits'] as $visit) {
+        //mostramos cada uno y le damos un formato para entender lo que nos devuelve
+        printf("<p>%s</p>", date("Y-m-d H:i:s", $visit));
+      }
+      //y por ultimo mostramos con count cuantas visitas tenemos
     ?>
     <p>Numero total de visitas actualmente: <?= count($_SESSION['visits']) ?></p>
     <button name="delete" type="submit">Eliminar historial</button>
   </form>
+  <?php
+  }
+  ?>
 </body>
 
 </html>

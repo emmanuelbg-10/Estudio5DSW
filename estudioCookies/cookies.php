@@ -12,6 +12,9 @@ if (!empty($_GET['name']) && !empty($_GET['password'])) {
   setcookie($cookie_name, $cookie_value);
   header("Location: bienvenido.php");
   exit;
+} else {
+  http_response_code(404);
+  exit;
 }
 
 ?>
